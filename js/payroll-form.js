@@ -7,18 +7,19 @@ window.addEventListener('DOMContentLoaded', (event)=>{
       return;
     }
     try{
-      (new EmployeePayrollData()).name =name.value; ;
+      new EmployeePayrollData().name =name.value; 
       textError.textContent ="";
     }catch(e){
       textError.textContent = e;
     }
   });
+
   const salary = document.querySelector('#salary');
   const output = document.querySelector('.salary-output');
   output.textContent = salary.value;
   salary.addEventListener('input', function(){
     output.textContent = salary.value;
-  })
+  });
 
   var date = document.getElementById("day");
   var month = document.getElementById("month");
@@ -71,7 +72,7 @@ const createEmployeePayroll = () =>{
   }
   employeePayrollData.profilePic = getSelectedValues('[name=profile]').pop();
   employeePayrollData.gender = getSelectedValues('[name=gender]').pop();
-  employeePayrollData.department = getSelectedValues('[name=department]').pop();
+  employeePayrollData.department = getSelectedValues('[name=department]');
   employeePayrollData.salary = getInputValueById('#salary');
   employeePayrollData.notes = getInputValueById('#notes');
   let date = getInputValueById('#year')+"-"+ getInputValueById('#month')+"-"+

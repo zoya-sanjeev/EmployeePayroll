@@ -13,11 +13,11 @@ class EmployeePayrollData {
     }
 
     set name(name) {
-        let nameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$');
+        let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
         if (nameRegex.test(name))
             this._name = name;
         else
-            throw "NAME is Incorrect";
+            throw "Name is Incorrect";
     }
 
     get profilePic() {
@@ -76,9 +76,15 @@ class EmployeePayrollData {
     }
 
     toString() {
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        const employeeDate = this.startDate == undefined ? "undefined" : this.startDate.toLocaleDateString("en-us", options);
-        return "Id = " + this.id + ", Name = " + this.name + ", Profile Image = " + this.profilePic + ", Gender = " + this.gender + ", Department = " + this.department + ", Salary = " + this.salary + ", Start Date = " + employeeDate + ", Notes = " + this.notes;
-    }
+        const options = { year: "numeric", month: "long", day: "numeric" };
+        const empDate = !this.startDate
+          ? "undefined"
+          : this.startDate.toLocaleDateString("en-US", options);
+    
+        return ("id=" +this.id +", name=" +this.name +", gender=" +this.gender +
+          ", profilePic='" +this.profilePic +", department=" +this.department +
+          ", salary=" +this.salary +", startDate=" +empDate +", note=" +this.notes
+        );
+      }
 
 }
