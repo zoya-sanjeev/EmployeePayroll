@@ -19,6 +19,26 @@ window.addEventListener('DOMContentLoaded', (event)=>{
   salary.addEventListener('input', function(){
     output.textContent = salary.value;
   })
+
+  var date = document.getElementById("day");
+  var month = document.getElementById("month");
+  var year = document.getElementById("year");
+  const dateError = document.querySelector(".date-error");
+  date.addEventListener("change", validateDate);
+  month.addEventListener("change", validateDate);
+  year.addEventListener("change", validateDate);
+
+  function validateDate() {
+    let startDate = Date.parse(
+      year.value + "-" + month.value + "-" + date.value
+    );
+    try {
+      new EmployeePayrollData().startDate = startDate;
+      dateError.textContent = "";
+    } catch (e) {
+      dateError.textContent = e;
+    }
+  }
 });
 
 const save = () => {
@@ -39,12 +59,12 @@ const createEmployeePayroll = () =>{
   }
   employeePayrollData.profilePic = getSelectedValues('[name=profile]').pop();
   employeePayrollData.gender = getSelectedValues('[name=gender]').pop();
-  employeePayrollData.department = getSelectedValues('[name=department]');
+  employeePayrollData.department = getSelectedValues('[name=department]').pop();
   employeePayrollData.salary = getInputValueById('#salary');
   employeePayrollData.notes = getInputValueById('#notes');
-  let date = getInputValueById('#day')+ getInputValueById('#month')+" "+
-            getInputValueById('#year');
-  employeePayrollData.date=Date.parse(date);
+  let date = getInputValueById('#year')+"-"+ getInputValueById('#month')+"-"+
+            getInputValueById('#day');
+  employeePayrollData.date=new Date(Date.parse(date));
   alert(employeePayrollData.toString());
   return employeePayrollData;
 }
@@ -55,6 +75,10 @@ const getSelectedValues = (propertyValue) =>{
     if(item.checked) selItems.push(item.value);
   });
   return selItems;
+}
+const getInputValueById =(id) =>{
+  let value =document.querySelector(id).value;
+  return value;
 }
 
 
