@@ -3,3 +3,6 @@ var salary = document.querySelector("#salary");
 salary.addEventListener("input", function () {
   salaryOutput.textContent = salary.value;
 });
+
+
+
