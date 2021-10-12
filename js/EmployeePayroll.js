@@ -67,22 +67,3 @@ toString() {
   }
 
 }
-
-function save() {
-
-    let employeeName = document.querySelector('#name').value;
-    let employeeSalary = document.querySelector('#salary').value;
-
-    let day = document.querySelector('#day').value;
-    let month = document.querySelector('#month').value;
-    let year = document.querySelector('#year').value;
-    let employeeStartDate = new Date(year, month, day);
-
-    let employeeNotes = document.querySelector('#notes').value;
-    try {
-        let employeePayrollData = new EmployeePayrollData(employeeName, employeeSalary, employeeStartDate, employeeNotes);
-        console.log(employeePayrollData.toString());
-    } catch (e) {
-        console.error(e);
-    }
-}
