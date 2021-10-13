@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
           </tr>
           `;
     }
-    document.querySelector("#table-display").innerHTML = innerHtml;
+    document.querySelector("#display").innerHTML = innerHtml;
   };
   
   const createEmployeePayrollJSON = () => {
@@ -37,17 +37,17 @@ window.addEventListener("DOMContentLoaded", (event) => {
         _startDate: "29 Oct, 2020",
         _note: "",
         _id: new Date().getTime(),
-        _picture: "../assets/profile-images/Ellipse -2.png",
+        _picture: "../assets/profile-imgs/Ellipse -2.png",
       },
       {
-        _name: "ABC",
+        _name: "Zoya",
         _gender: "Female",
         _department: ["Sales", "Engineering"],
         _salary: "750000",
         _startDate: "10 Dec 2019",
         _note: "",
         _id: new Date().getTime() + 1,
-        _picture: "../assets/profile-images/Ellipse -7.png",
+        _picture: "../assets/profile-imgs/Ellipse -9.png",
       },
     ];
   
