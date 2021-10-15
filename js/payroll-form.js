@@ -103,6 +103,34 @@ const getInputValueById =(id) =>{
   let value =document.querySelector(id).value;
   return value;
 }
+
+const setForm = () => {
+  setValue('#name', employeePayrollObj._name);
+  setSelectedValues('[name=profile]', employeePayrollObj._profilePic);
+  setSelectedValues('[name=gender]', employeePayrollObj._gender);
+  setSelectedValues('[name=department]', employeePayrollObj._departement);
+  setValue('#salry', employeePayrollObj._salary);
+  setTextValue('.salary-output',employeePayrollObj._salary);
+  setValue("#notes", employeePayrollObj._notes);
+  let date = stringifyDate(employeePayrollObj._startDate).split(" ");
+  setValue('#day', date[0]);
+  setValue('#month', date[1]);
+  setValue('#year', date[2]);
+
+}
+
+const setSelectedValues = (propertyValue, value) =>{
+  let allItems = document.querySelectorAll(propertyValue);
+  allItems.forEach(item => {
+    if(Array.isArray(value)){
+      if(value.includes(item.value)){
+        item.checked = true;
+      }
+    }
+    else if(item.value == value)
+      item.checked = true;
+  })
+}
 const resetForm = () => {
   setValue('#name','');
   unsetSelectedValues('[name=profile]');
