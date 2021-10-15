@@ -113,7 +113,7 @@ const setForm = () => {
   setTextValue('.salary-output',employeePayrollObj._salary);
   setValue("#notes", employeePayrollObj._notes);
   let date = stringifyDate(employeePayrollObj._startDate).split(" ");
-  console.log(date);
+  console.log(date);          
   setValue('#day', date[0]);
   setValue('#month', date[1]);
   setValue('#year', date[2]);
@@ -139,9 +139,9 @@ const resetForm = () => {
   unsetSelectedValues('[name=department]');
   setValue('#salary','');
   setValue('#notes','');
-  setValue('#day','1');
-  setValue('#month','January');
-  setValue('#year','2020');
+  setSelectedIndex('#day',0);
+  setSelectedIndex('month', 0);
+  setSelectedIndex('#year',0);
 }
 
 const unsetSelectedValues = (propertyValue) => {
