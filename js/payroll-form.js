@@ -109,10 +109,11 @@ const setForm = () => {
   setSelectedValues('[name=profile]', employeePayrollObj._profilePic);
   setSelectedValues('[name=gender]', employeePayrollObj._gender);
   setSelectedValues('[name=department]', employeePayrollObj._departement);
-  setValue('#salry', employeePayrollObj._salary);
+  setValue('#salary', employeePayrollObj._salary);
   setTextValue('.salary-output',employeePayrollObj._salary);
   setValue("#notes", employeePayrollObj._notes);
   let date = stringifyDate(employeePayrollObj._startDate).split(" ");
+  console.log(date);
   setValue('#day', date[0]);
   setValue('#month', date[1]);
   setValue('#year', date[2]);
