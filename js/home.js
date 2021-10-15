@@ -29,7 +29,7 @@ const createInnerHtml = () => {
         <td>${empPayrollData._gender}</td>
         <td>${getDeptHtml(empPayrollData._department)}
         <td>${empPayrollData._salary}</td>
-        <td>${formatDate(empPayrollData._startDate)}</td>
+        <td>${stringifyDate(empPayrollData._startDate)}</td>
         <td>
         <img id="1" onclick="remove(this)" alt="delete" src="../assets/icons/delete-black-18dp.svg">
         <img id="1" alt="edit" onclick="update(this)" src="../assets/icons/create-black-18dp.svg">
@@ -40,12 +40,6 @@ const createInnerHtml = () => {
   document.querySelector("#table-display").innerHTML = innerHtml;
 };
 
-const formatDate = (date) => {
-  date = new Date(date);
-  return (
-    date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
-  );
-};
 
 const getDeptHtml = (departmentList) => {
   let deptHtml = "";
