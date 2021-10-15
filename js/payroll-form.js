@@ -1,3 +1,6 @@
+let isUpdate = false;
+let employeePayrollObj ={};
+
 window.addEventListener('DOMContentLoaded', (event)=>{
   const name=document.querySelector('#name');
   const textError = document.querySelector('.text-error');
@@ -21,6 +24,7 @@ window.addEventListener('DOMContentLoaded', (event)=>{
     output.textContent = salary.value;
   });
 
+
   var date = document.getElementById("day");
   var month = document.getElementById("month");
   var year = document.getElementById("year");
@@ -40,6 +44,7 @@ window.addEventListener('DOMContentLoaded', (event)=>{
       dateError.textContent = e;
     }
   }
+  checkForUpdate();
 });
 
 const save = () => {
@@ -126,4 +131,11 @@ const setValue = (id, value) => {
   element.value = value;
 }
 
+const checkForUpdate = () => {
+  const employeePayrollJson = localStorage.getItem('editEmp');
+  isUpdate = employeePayrollJson ? true : false;
+  if(!isUpdate) return ;
+  employeePayrollObj = JSON.parse(employeePayrollJson);
+  setForm();
+}
 
