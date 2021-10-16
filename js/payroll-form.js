@@ -47,14 +47,19 @@ window.addEventListener('DOMContentLoaded', (event)=>{
   checkForUpdate();
 });
 
-const save = () => {
-  try{
-    let employeePayrollData = createEmployeePayroll();
-    createAndUpdateStorage(employeePayrollData);
-  }catch(e){
+const save = (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  try {
+    setEmployeePayrollObject();
+    createAndUpdateStorage();
+    resetForm();
+    window.location.replace(site_properties.home_page);
+  } catch (e) {
+    console.error(e);
     return;
   }
-}
+};
 
 function createAndUpdateStorage(employeePayrollData){
   let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
