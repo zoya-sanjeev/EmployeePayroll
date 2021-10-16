@@ -99,6 +99,24 @@ const createEmployeePayroll = (id) => {
   return employeePayrollData;
 };
 
+const setEmployeePayrollData = (employeePayrollData) => {
+  try {
+    employeePayrollData.name = getInputValueById("#name");
+  } catch (e) {
+    setTextValue(".text-error", e);
+    throw e;
+  }
+
+  employeePayrollData.profilePic = getSelectedValues("[name=profile]").pop();
+  employeePayrollData.gender = getSelectedValues("[name=gender]").pop();
+  employeePayrollData.department = getSelectedValues("[name=department]");
+  employeePayrollData.salary = getInputValueById("#salary");
+  employeePayrollData.note = getInputValueById("#notes");
+  let date =getInputValueById("#year") + "-" + getInputValueById("#month") + "-" + getInputValueById("#day");
+  employeePayrollData.startDate = new Date(Date.parse(date));
+  alert(employeePayrollData.toString());
+};
+
 const getSelectedValues = (propertyValue) =>{
   let allItems = document.querySelectorAll(propertyValue);
   let selItems = [];
