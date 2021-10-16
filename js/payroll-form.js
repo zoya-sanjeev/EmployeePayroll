@@ -91,25 +91,14 @@ const createAndUpdateStorage = () => {
   localStorage.setItem("EmployeePayrollList",JSON.stringify(employeePayrollList));
 };
 
-const createEmployeePayroll = () =>{
+const createEmployeePayroll = (id) => {
   let employeePayrollData = new EmployeePayrollData();
-  try{
-    employeePayrollData.name = getInputValueById('#name');
-  }catch(e){
-    setTextValue('.text-error',e);
-    throw e;
-  }
-  employeePayrollData.profilePic = getSelectedValues('[name=profile]').pop();
-  employeePayrollData.gender = getSelectedValues('[name=gender]').pop();
-  employeePayrollData.department = getSelectedValues('[name=department]');
-  employeePayrollData.salary = getInputValueById('#salary');
-  employeePayrollData.notes = getInputValueById('#notes');
-  let date = getInputValueById('#month')+" "+ getInputValueById('#day')+", "+
-            getInputValueById('#year');
-  employeePayrollData.startDate=new Date(date);
-  alert(employeePayrollData.toString());
+  if (!id) employeePayrollData._id = new Date().getTime();
+  else employeePayrollData._id = id;
+  setEmployeePayrollData(employeePayrollData);
   return employeePayrollData;
-}
+};
+
 const getSelectedValues = (propertyValue) =>{
   let allItems = document.querySelectorAll(propertyValue);
   let selItems = [];
