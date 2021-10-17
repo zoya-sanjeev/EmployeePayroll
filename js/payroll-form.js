@@ -111,11 +111,18 @@ const setEmployeePayrollData = (employeePayrollData) => {
   employeePayrollData.gender = getSelectedValues("[name=gender]").pop();
   employeePayrollData.department = getSelectedValues("[name=department]");
   employeePayrollData.salary = getInputValueById("#salary");
-  employeePayrollData.note = getInputValueById("#notes");
+  employeePayrollData.notes = getInputValueById("#notes");
   let date =getInputValueById("#year") + "-" + getInputValueById("#month") + "-" + getInputValueById("#day");
   employeePayrollData.startDate = new Date(Date.parse(date));
   alert(employeePayrollData.toString());
 };
+
+const createNewEmployeeId = () => {
+  let employeeId = localStorage.getItem('EmployeeId');
+  employeeId = !employeeId ? 1: (parseInt(employeeId)+1).toString();
+  localStorage.setItem('EmployeeId', employeeId);
+  return employeeId;
+}
 
 const getSelectedValues = (propertyValue) =>{
   let allItems = document.querySelectorAll(propertyValue);
@@ -169,9 +176,10 @@ const resetForm = () => {
   unsetSelectedValues('[name=department]');
   setValue('#salary','');
   setValue('#notes','');
-  setSelectedIndex('#day',0);
-  setSelectedIndex('month', 0);
-  setSelectedIndex('#year',0);
+  setValue('#day',"1");
+  setValue('#month', "1");
+  setValue('#year',"2021");
+  setTextValue(".salary-output", "400000");
 }
 
 const unsetSelectedValues = (propertyValue) => {
