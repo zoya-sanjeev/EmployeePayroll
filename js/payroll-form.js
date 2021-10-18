@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', (event)=>{
       return;
     }
     try{
-      new EmployeePayrollData().name =name.value; 
+      checkName(name.value); 
       textError.textContent ="";
     }catch(e){
       textError.textContent = e;
@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', (event)=>{
       year.value + "-" + month.value + "-" + date.value
     );
     try {
-      new EmployeePayrollData().startDate = startDate;
+      checkStartDate(startDate);
       dateError.textContent = "";
     } catch (e) {
       dateError.textContent = e;
