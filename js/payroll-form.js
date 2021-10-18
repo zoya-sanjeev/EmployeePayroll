@@ -75,15 +75,15 @@ const setEmployeePayrollObject = () => {
 const createAndUpdateStorage = () => {
   let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
   if (employeePayrollList) {
-    let empPayrollData = employeePayrollList.find((empData) => empData._id == employeePayrollObj._id);
+    let empPayrollData = employeePayrollList.find((empData) => empData.id == employeePayrollObj.id);
 
     if (!empPayrollData) {
       employeePayrollList.push(createEmployeePayroll());
     } else {
       const index = employeePayrollList
-            .map((empData) => empData._id)
-            .indexOf(empPayrollData._id);
-      employeePayrollList.splice(index,1,createEmployeePayroll(empPayrollData._id));
+            .map((empData) => empData.id)
+            .indexOf(empPayrollData.id);
+      employeePayrollList.splice(index,1,createEmployeePayroll(empPayrollData.id));
     }
   } else {
     employeePayrollList = [createEmployeePayroll()];
@@ -93,8 +93,8 @@ const createAndUpdateStorage = () => {
 
 const createEmployeePayroll = (id) => {
   let employeePayrollData = new EmployeePayrollData();
-  if (!id) employeePayrollData._id = new Date().getTime();
-  else employeePayrollData._id = id;
+  if (!id) employeePayrollData.id = new Date().getTime();
+  else employeePayrollData.id = id;
   setEmployeePayrollData(employeePayrollData);
   return employeePayrollData;
 };
