@@ -19,6 +19,19 @@ const processEmployeePayrollDataResponse =() => {
   localStorage.removeItem("editEmp");
 }
 
+const getEmployeePayrollDataFromServer = ()=> {
+  makeServiceCall("GET", site_properties.server_url, true)
+    .then(responseText =>{
+      employeePayrollList = JSON.parse(responseText);
+      processEmployeePayrollDataResponse();
+    })
+    .catch(error =>{
+      console.log("GET Error Status: " + JSON.stringify(error));
+      employeePayrollList = [];
+      processEmployeePayrollDataResponse();
+    });
+}
+
 const createInnerHtml = () => {
   const headerHtml =
     "<tr><th></th><th>Name</th><th>Gender</th><th>Department</th>" +
