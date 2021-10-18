@@ -34,11 +34,11 @@ window.addEventListener('DOMContentLoaded', (event)=>{
   year.addEventListener("change", validateDate);
 
   function validateDate() {
-    let startDate = Date.parse(
-      year.value + "-" + month.value + "-" + date.value
-    );
+    let startDate = new Date(Date.parse(
+      year.value + " " + month.value + " " + day.value
+    ));
     try {
-      checkStartDate(startDate);
+      checkStartDate(new Date(Date.parse(startDate)));
       dateError.textContent = "";
     } catch (e) {
       dateError.textContent = e;
