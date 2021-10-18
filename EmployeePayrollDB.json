@@ -38,19 +38,6 @@
       "_notes": "",
       "_profilePic": "../assets/profile-imgs/Ellipse -1.png",
       "id": 3
-    },
-    {
-      "_name": "Draco Malfoy",
-      "_profilePic": "../assets/profile-imgs/Ellipse -8.png",
-      "_gender": "male",
-      "_department": [
-        "Sales",
-        "Finance"
-      ],
-      "_salary": "441000",
-      "_notes": "notes!!",
-      "_startDate": "2021-10-13T18:30:00.000Z",
-      "id": 4
     }
   ]
 }
