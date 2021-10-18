@@ -70,7 +70,7 @@ const setEmployeePayrollObject = () => {
   employeePayrollObj.gender = getSelectedValues("[name=gender]").pop();
   employeePayrollObj.department = getSelectedValues("[name=department]");
   employeePayrollObj.salary = getInputValueById("#salary");
-  employeePayrollObj.note = getInputValueById("#notes");
+  employeePayrollObj.notes = getInputValueById("#notes");
   let date =getInputValueById("#year") + "-" + getInputValueById("#month") + "-" + getInputValueById("#day");
   employeePayrollObj.startDate = new Date(Date.parse(date));
 };
@@ -117,12 +117,12 @@ const getInputValueById =(id) =>{
 const setForm = () => {
   setValue('#name', employeePayrollObj._name);
   setSelectedValues('[name=profile]', employeePayrollObj._profilePic);
-  setSelectedValues('[name=gender]', employeePayrollObj._gender);
-  setSelectedValues('[name=department]', employeePayrollObj._department);
-  setValue('#salary', employeePayrollObj._salary);
-  setTextValue('.salary-output',employeePayrollObj._salary);
-  setValue("#notes", employeePayrollObj._notes);
-  let date = getDate(employeePayrollObj._startDate).split(" ");         
+  setSelectedValues('[name=gender]', employeePayrollObj.gender);
+  setSelectedValues('[name=department]', employeePayrollObj.department);
+  setValue('#salary', employeePayrollObj.salary);
+  setTextValue('.salary-output',employeePayrollObj.salary);
+  setValue("#notes", employeePayrollObj.notes);
+  let date = getDate(employeePayrollObj.startDate).split(" ");         
   setValue('#day', date[0]);
   setValue('#month', date[1]);
   setValue('#year', date[2]);
