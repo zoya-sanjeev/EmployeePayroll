@@ -62,6 +62,9 @@ const save = (event) => {
 };
 
 const setEmployeePayrollObject = () => {
+  if(!isUpdate && site_properties.use_local_storage.match("true")){
+    employeePayrollObj.id = createNewEmployeeId();
+  }
   employeePayrollObj._name = getInputValueById("#name");
   employeePayrollObj._profilePic = getSelectedValues("[name=profile]").pop();
   employeePayrollObj.gender = getSelectedValues("[name=gender]").pop();
